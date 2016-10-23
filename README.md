@@ -1,6 +1,6 @@
-# Rhett + Link Microsite
+# Herb Torres Portfolio Site
 
-Rhett + Link Microsite project
+My porftolio scaffold built in Polymer.
 
 # Getting Started
 
