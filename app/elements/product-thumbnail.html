@@ -1,0 +1,197 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="product-thumbnail">
+
+  <template>
+
+    <style include="shared-styles">
+
+      :host {
+        display: block;
+      }
+
+      /**
+       * Typography
+       */
+
+      #product ::content [product-name] {
+        margin-bottom: 30px;
+      }
+
+      #price ::content span {
+        font-size: 20px;
+        font-weight: 400px;
+
+      }
+
+      /**
+       * Product and Price Styles
+       */
+
+      #product {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -ms-flex-pack: center;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: 0 auto 10px auto;
+      }
+
+      #image {
+        position: relative;
+        margin-top: -15px;
+        margin-bottom: 20px;
+        height: auto;
+      }
+
+      #image ::content [product-image] {
+        width: 350px;
+        height: 350px;
+        border: 8px solid #cf342b;
+        box-sizing: border-box;
+      }
+
+      #price {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -ms-flex-pack: center;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+      }
+
+      #sale {
+        position: absolute;
+        width: 134px;
+        top: -20px;
+        left: -40px;
+        display: none;
+      }
+
+      #link {
+        font-size: 20px;
+        background: #cf342b;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-style: italic;
+        border-radius: 20px;
+        text-decoration: none;
+        padding: 3px 30px;
+        border: 3px solid #cf342b;
+        box-sizing: border-box;
+        transition: all .2s ease-in-out;
+      }
+
+      :host-context(.on-sale) #sale {
+        display: block;
+      }
+
+      @media screen and (min-width: 800px) {
+
+        #link:hover {
+          background: #fff9b0;
+          color: #cf342b;
+        }
+
+      }
+
+      @media screen and (max-width: 480px) {
+
+        #product ::content h1 {
+          font: 800 24px/36px var(--site-font-family);
+          font-style: italic;
+        }
+
+        #image ::content [product-image] {
+          width: 275px;
+          height: 275px;
+        }
+
+        #sale {
+          left: -30px;
+        }
+
+      }
+
+    </style>
+
+    <div id="product">
+
+      <content select="[product-name]"></content>
+
+      <div id="image">
+        <content select="[product-image]"></content>
+        <img src="../images/sale.png" alt="For Sale!" id="sale">
+      </div>
+
+      <div id="price">
+        <content select="[product-price]"></content>
+        &nbsp;&nbsp;<a href="{{siteUrl}}" id="link">Buy Now!</a>
+      </div>
+
+    </div>
+
+
+  </template>
+
+  <script>
+
+    (function () {
+
+      'use strict';
+
+      Polymer({
+
+        is: 'product-thumbnail',
+
+        properties: {
+          siteUrl: {
+            type: String,
+            value: ''
+          }
+        }
+
+      });
+
+    })();
+  </script>
+
+</dom-module>

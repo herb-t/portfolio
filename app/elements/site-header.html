@@ -1,0 +1,486 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+
+
+<!-- elements -->
+<link rel="import" href="site-icons.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="site-header">
+
+  <template>
+
+    <style include="shared-styles">
+
+      :host {
+        display: block;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      #main-nav {
+        width: 100%;
+        padding: 10px 0 0 0;
+      }
+
+      #main-nav a {
+        color: #000;
+        font: 300 18px/24px var(--site-font-family);
+        text-decoration: none;
+      }
+
+      #top-header-nav {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+        width: 100%;
+      }
+
+      #top-header-nav {
+        max-width: 910px;
+        padding: 0 25px;
+      }
+
+      #mobile-nav {
+        display: none;
+      }
+
+      #off-canvas-nav {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        padding-top: 20px;
+      }
+
+      #logo,
+      #links {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        width: 100%;
+      }
+
+      #logo {
+        max-width: 280px;
+        height: 71px;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+      }
+
+      #logo img {
+        width: 100%;
+      }
+
+      #logo a,
+      #mobile-logo a {
+        text-indent: -9999px;
+        color: rgba(255, 255, 255, 0);
+      }
+
+      #links {
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: flex-end;
+                justify-content: flex-end;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+      }
+
+      #links li {
+        text-align: center;
+        list-style: none;
+        padding: 0 2px;
+      }
+
+      #links li a {
+        display: block;
+      }
+
+      .icon {
+        width: 31px;
+        height: 31px;
+        -webkit-transition: all 0.3s ease-out;
+           -moz-transition: all 0.3s ease-out;
+            -ms-transition: all 0.3s ease-out;
+             -o-transition: all 0.3s ease-out;
+                transition: all 0.3s ease-out;
+      }
+
+      .icon-facebook {
+        background: url('../images/facebook.png');
+        -webkit-background-size: 31px 31px;
+             -o-background-size: 31px 31px;
+                background-size: 31px 31px;
+      }
+
+      .icon-twitter {
+        background: url('../images/twitter.png');
+        -webkit-background-size: 31px 31px;
+             -o-background-size: 31px 31px;
+                background-size: 31px 31px;
+      }
+
+      .icon-tumblr {
+        background: url('../images/tumblr.png');
+        -webkit-background-size: 31px 31px;
+             -o-background-size: 31px 31px;
+                background-size: 31px 31px;
+      }
+
+      .contact-number {
+        font-size: 24px;
+        font-weight: 800;
+        font-style: italic;
+        padding-left: 10px !important;
+        padding-right: 0 !important;
+      }
+
+      #product-nav {
+        background: #CF342B;
+        margin: 25px auto 0 auto;
+
+      }
+
+      #product-links {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -ms-flex-pack: center;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: 25px 0;
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto !important;
+      }
+
+      #product-links li {
+        text-transform: uppercase;
+        margin: 0 10px;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      #product-links li a {
+        color: #ffffff;
+        font: 700 20px/26px var(--site-font-family);
+        font-style: italic;
+        width: 100%;
+      }
+
+      #login-signup {
+        margin:0 0 0 7% !important;
+      }
+
+      #login-signup a {
+        font: 800 14px/18px var(--site-font-family) !important;
+        font-style: italic !important;
+      }
+
+      .divider {
+        position: relative;
+        top: 0;
+        max-width: 10px;
+        font: 700 34px/34px var(--site-font-family);
+      }
+
+      /* mobile styles */
+      #mobile-nav {
+        height: 30px;
+        width: 100%;
+      }
+
+      #mobile-logo {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        z-index: 2;
+        -webkit-transform: translateX(-50%);
+           -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+             -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+      }
+
+      /* off canvas nav */
+      #paperDrawerPanel [main] {
+        width: 25px;
+        height: 25px;
+      }
+
+      #paperDrawerPanel [drawer] {
+        border-right: 1px solid rgba(0, 0, 0, 0.35);
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      #paperDrawerPanel ::content #drawer {
+        z-index: 10;
+      }
+
+      #paperDrawerPanel ::content #scrim {
+        z-index: 5;
+      }
+
+      #hamburger {
+        position: relative;
+        top: 30px;
+        left: 25px;
+        padding: 10px;
+        text-decoration: none;
+        font: 700 24px/24px sans-serif;
+        color: #CF342B;
+        background: url('../images/menu.png')no-repeat center center;
+        -webkit-background-size: contain;
+             -o-background-size: contain;
+                background-size: contain;
+      }
+
+      #mobile-links li a {
+        font-weight: 700;
+      }
+
+      #mobile-links li a,
+      #mobile-links li a:active,
+      #mobile-links li a:focus {
+        outline: 0;
+        border: 0;
+      }
+
+      #mobile-social-links {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+      }
+
+      #off-canvas-nav li {
+        padding: 10px;
+        text-transform: uppercase;
+      }
+
+      #off-canvas-nav li a {
+        text-decoration: none;
+        color: #000000;
+      }
+
+      #mobile-social-links li {
+        padding-right: 2px;
+      }
+
+      #mobile-social-links li:last-child {
+        padding-right: 0px;
+      }
+
+      #mobile-social-links li a {
+        display: block;
+      }
+
+      #btn-close-nav {
+        position: absolute;
+        top: 4px;
+        right: 10px;
+        padding: 10px;
+        font: 600 25px/25px 'Open Sans', sans-serif;
+        color: #000000;
+        text-decoration: none;
+      }
+
+      #mobile-logo img {
+        height: 80px;
+      }
+
+      @media screen and (max-width: 1050px) {
+        #product-links li a {
+          font-size: 24px;
+        }
+      }
+
+      @media screen and (max-width: 959px) {
+        #main-nav {
+          display: none;
+        }
+
+        #mobile-nav {
+          display: block;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+
+        #mobile-logo img {
+          height: 40px;
+        }
+
+        #hamburger {
+          top: 17px;
+        }
+      }
+
+    </style>
+
+    <!-- header nav -->
+    <nav id="main-nav">
+
+      <div id="top-header-nav" class="content-container">
+        <!-- logo -->
+
+        <a href="{{siteUrl}}" id="logo">
+          <img src="../images/logo-header.png" alt="">
+        </a>
+
+        <!-- social -->
+        <ul id="links">
+          <li><a href="{{siteUrl}}" class="icon icon-facebook"></a></li>
+          <li><a href="{{siteUrl}}" class="icon icon-twitter"></a></li>
+          <li><a href="{{siteUrl}}" class="icon icon-tumblr"></a></li>
+          <li class="contact-number">1-844-90-BRELL</li>
+        </ul>
+      </div>
+
+      <!-- 'product' nav-->
+      <div id="product-nav">
+        <ul id="product-links">
+          <li><a href="{{siteUrl}}">apparel</a></li>
+          <li><span class="divider">&#8226;</span></li>
+          <li><a href="{{siteUrl}}">home goods</a></li>
+          <li><span class="divider">&#8226;</span></li>
+          <li><a href="{{siteUrl}}">sporting</a></li>
+          <li><span class="divider">&#8226;</span></li>
+          <li><a href="{{siteUrl}}">toys</a></li>
+          <li><span class="divider">&#8226;</span></li>
+          <li><a href="{{siteUrl}}">sale</a></li>
+
+          <li id="login-signup"><a href="{{siteUrl}}">login&#47;sign up</a></li>
+        </ul>
+      </div>
+
+    </nav>
+
+    <nav id="mobile-nav">
+
+      <a href="{{siteUrl}}" id="mobile-logo">
+        <img src="../images/logo-header.png" alt="">
+      </a>
+
+      <paper-drawer-panel id="paperDrawerPanel" force-narrow on-iron-select="_onDrawerOpen">
+
+        <div id="off-canvas-nav" drawer>
+          <ul id="mobile-links">
+            <li><a href="{{siteUrl}}">apparel</a></li>
+            <li><a href="{{siteUrl}}">home goods</a></li>
+            <li><a href="{{siteUrl}}">sporting</a></li>
+            <li><a href="{{siteUrl}}">toys</a></li>
+            <li><a href="{{siteUrl}}">sale</a></li>
+            <li><a href="{{siteUrl}}">login&#47;sign up</a></li>
+          </ul>
+
+          <ul id="mobile-social-links">
+            <li><a href="{{siteUrl}}" class="icon icon-facebook"></a></li>
+            <li><a href="{{siteUrl}}" class="icon icon-twitter"></a></li>
+            <li><a href="{{siteUrl}}" class="icon icon-tumblr"></a></li>
+            <li class="contact-number">1-844-90-BRELL</li>
+          </ul>
+
+          <a href="#" tabindex="0" paper-drawer-toggle id="btn-close-nav">x</a>
+
+        </div>
+
+        <div id="btn-hamburger" main>
+          <a href="#" paper-drawer-toggle id="hamburger"></a>
+        </div>
+
+      </paper-drawer-panel>
+
+    </nav>
+
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'site-header',
+
+        properties: {
+          siteUrl: {
+            type: String,
+            value: ''
+          }
+        },
+
+        _onDrawerOpen: function() {
+
+          this.$.paperDrawerPanel.selected == 'drawer' ? document.body.className += 'no-scroll' : document.body.className = '';
+
+        }
+
+      });
+
+    })();
+  </script>
+
+</dom-module>

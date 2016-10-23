@@ -1,0 +1,398 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- elements -->
+<link rel="import" href="hook-yt-player.html">
+<link rel="import" href="product-thumbnail.html">
+<link rel="import" href="site-header.html">
+<link rel="import" href="site-footer.html">
+<link rel="import" href="site-icons.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="site-main">
+
+  <template>
+
+    <style include="shared-styles">
+
+      :host {
+        display: block;
+      }
+
+      body {
+        position: relative;
+        overflow: hidden;
+        font-family: var(--site-font-family);
+      }
+
+      section {
+        position: relative;
+        padding: 0 25px;
+        z-index: 4;
+      }
+
+      .section-header {
+        width: 100%;
+        margin: 50px 0;
+        background: #f38cb5;
+        color: #fff;
+        font-family: var(--site-font-family);
+        font-size: 32px;
+        font-weight: 700;
+        font-style: italic;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px 0;
+        text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /*video styles*/
+      .video-header {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        width: 100%;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+      }
+
+      .header-title,
+      .header-price-buy {
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+      }
+
+      .header-price-buy {
+        text-align: right;
+      }
+
+      .header-price-buy a {
+        text-decoration: none;
+        color: #000;
+        background: #rgba(255, 255, 255, 0);
+        padding: 10px 15px;
+        -webkit-border-radius: 24px;
+        border-radius: 24px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      hook-yt-player {
+        margin-bottom: 50px;
+      }
+
+      .header-price-buy span {
+        font-size: 20px;
+        line-height: 22px;
+        font-weight: 400px;
+        margin-right: 5px;
+      }
+
+      .header-price-buy .buy-now {
+        font-size: 20px;
+        line-height: 22px;
+        background: #cf342b;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-style: italic;
+        border-radius: 20px;
+        text-decoration: none;
+        padding: 3px 30px;
+        border: 3px solid #cf342b;
+        box-sizing: border-box;
+        transition: all .2s ease-in-out;
+      }
+
+      #products {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -ms-flex-pack: justify;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        width: 100%;
+        margin: 50px 0;
+      }
+
+      product-thumbnail {
+        display: block;
+        width: 50%;
+        margin: 0 0 2% 0;
+      }
+
+      .sacripet {
+        width: 121px;
+      }
+
+      .drainweaver {
+        width: 181px;
+      }
+
+      .bra {
+        width: 222px;
+      }
+
+      .hoodie {
+        width: 219px;
+      }
+
+      .bulb {
+        width: 165px;
+      }
+
+      .ball {
+        width: 286px;
+      }
+
+      .mobile {
+        display: none;
+      }
+
+      @media screen and (min-width: 800px) {
+
+        .header-price-buy .buy-now:hover {
+          background: #fff9b0;
+          color: #cf342b;
+        }
+
+      }
+
+      @media screen and (max-width: 960px) {
+
+        product-thumbnail {
+          width: 100%;
+          margin: 0 0 50px 0 !important;
+        }
+
+        section {
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -ms-flex;
+          display: -o-flex;
+          display: flex;
+          -webkit-flex-direction: column-reverse;
+          -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+        }
+
+        .section-header {
+          -webkit-order: 1;
+              -ms-order: 1;
+                  order: 1;
+        }
+
+        #section-two .video-header {
+          -webkit-order: 3;
+              -ms-order: 3;
+                  order: 3;
+        }
+
+        #video2 {
+          -webkit-order: 5;
+              -ms-order: 5;
+                  order: 5;
+        }
+
+        .drainweaver {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          -ms-align-self: center;
+          -webkit-align-self: center;
+                  align-self: center;
+          -webkit-order: 6;
+              -ms-order: 6;
+                  order: 6;
+        }
+
+        .sacripet {
+          -ms-align-self: center;
+          -webkit-align-self: center;
+                  align-self: center;
+          margin-bottom: 20px;
+        }
+
+        .desktop {
+          display: none;
+        }
+
+        .mobile {
+          display: block;
+        }
+
+
+      }
+
+      @media screen and (max-width: 600px) {
+
+        .video-header {
+          padding-bottom: 20px;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+        }
+
+        hook-yt-player {
+          margin-bottom: 40px;
+        }
+
+        .section-header {
+          font-size: 24px;
+          margin: 20px 0;
+        }
+
+      }
+
+    </style>
+
+    <!-- header top nav -->
+    <site-header site-url="{{siteUrl}}"></site-header>
+
+    <!-- content -->
+    <main class="content-container header-top">
+
+      <section>
+
+        <h1 class="section-header">award-winning products</h1>
+
+        <div class="video-header">
+
+          <image src="../images/sacripet.png" alt="Product!" class="sacripet desktop">
+
+          <div class="header-price-buy">
+            <span>$14.95</span>
+            <a href="{{siteUrl}}" class="buy-now">buy now!</a>
+          </div>
+
+        </div>
+
+        <hook-yt-player
+          id="video1"
+          video-id="H47YMvDvMKI"
+          height="auto"
+          width="100%"
+          rel="0"
+          start="1"
+          lang="en"
+          fluid>
+        </hook-yt-player>
+        <image src="../images/sacripet.png" alt="Product!" class="sacripet mobile">
+
+      </section>
+
+      <section id="section-two">
+
+        <div class="video-header">
+
+          <image src="../images/drainweaver.png" alt="Product!" class="drainweaver desktop">
+
+          <div class="header-price-buy">
+            <span>$19.99</span>
+            <a href="{{siteUrl}}" class="buy-now">buy now!</a>
+          </div>
+
+        </div>
+
+        <image src="../images/drainweaver.png" alt="Product!" class="drainweaver mobile">
+        <hook-yt-player
+          id="video2"
+          video-id="AVXjofd4wq8"
+          height="auto"
+          width="100%"
+          rel="0"
+          start="1"
+          lang="en"
+          fluid>
+        </hook-yt-player>
+
+        <h1 class="section-header">Try our other fine products!</h1>
+
+      </section>
+
+      <div id="products">
+
+        <product-thumbnail site-url="{{siteUrl}}" class="on-sale">
+          <image src="../images/bra.png" class="bra" alt="Bra" product-name>
+          <image src="../images/bra.jpg" alt="Product!" product-image>
+          <span product-price>$19.99</span>
+        </product-thumbnail>
+
+        <product-thumbnail site-url="{{siteUrl}}">
+          <image src="../images/hoodie.png" class="hoodie" alt="Bra" product-name>
+          <image src="../images/owl.jpg" alt="Product!" product-image>
+          <span product-price>$14.95</span>
+        </product-thumbnail>
+
+        <product-thumbnail site-url="{{siteUrl}}">
+          <image src="../images/bulb.png" class="bulb" alt="Bra" product-name>
+          <image src="../images/bulb.jpg" alt="Product!" product-image>
+          <span product-price>$19.99</span>
+        </product-thumbnail>
+
+        <product-thumbnail site-url="{{siteUrl}}">
+          <image src="../images/ball.png" class="ball" alt="Bra" product-name>
+          <image src="../images/ball.jpg" alt="Product!" product-image>
+          <span product-price>$14.95</span>
+        </product-thumbnail>
+
+      </div>
+
+    </main>
+
+    <site-footer></site-footer>
+
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'site-main',
+
+        properties: {
+          siteUrl: {
+            type: String,
+            value: ''
+          }
+        }
+
+      });
+
+    })();
+  </script>
+
+</dom-module>

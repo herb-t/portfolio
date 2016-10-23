@@ -1,0 +1,208 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- Polymer Elements -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
+<link rel="import" href="../bower_components/promise-polyfill/promise-polyfill.html">
+
+<!--
+`<hook-yt-player>` is a wrapper for the `<google-youtube>` video element and contains several parameters which can be seen below.  Parameter definitions can be seen here: https://elements.polymer-project.org/elements/google-youtube
+
+Example:
+
+    <hook-yt-player
+      id="text..."
+      height="number..."
+      width="number..."
+      rel="number..."
+      start="number..."
+      autoplay="number..."
+      thumbnail="text...">
+    </hook-yt-player>
+
+@element hook-yt-player
+@demo demo/index.html
+-->
+
+<dom-module id="hook-yt-player">
+  <template>
+    <style>
+
+      :host {
+        display: block;
+      }
+
+      google-youtube {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+    </style>
+
+    <!-- video -->
+    <google-youtube
+      id="player"
+      video-id=""
+      height="{{height}}"
+      width="{{width}}"
+      rel="0"
+      start="{{start}}"
+      autoplay="{{autoplay}}"
+      thumbnail="{{thumbnail}}"
+      hl="{{lang}}"
+      showinfo="0"
+      fluid
+      on-google-youtube-state-change="_checkForVideoPlaying">
+    </google-youtube>
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    var players = {prev: null, next: null};
+
+    Polymer({
+      is: 'hook-yt-player',
+
+      /**
+       * Element Properties
+       * @type {Object}
+       */
+
+      properties: {
+         /**
+       * give the element an id
+       * @type {String}
+       */
+        id: {
+          type: String,
+          value: ''
+        },
+        /**
+       * Sets the id of the video to play
+       * @type {String}
+       */
+        videoId: {
+          type: String,
+          value: ''
+        },
+         /**
+       * Sets the height of the video to play
+       * @type {String}
+       */
+        height: {
+          type: String,
+          value: ''
+        },
+         /**
+       * Sets the language
+       * @type {String}
+       */
+        lang: {
+          type: String,
+          value: ''
+        },
+         /**
+       * Sets the width of the video to play
+       * @type {String}
+       */
+        width: {
+          type: String,
+          value: ''
+        },
+         /**
+       * Indicates whether the player should show related videos when playback of the initial video ends
+       * @type {Number}
+       */
+        rel: {
+          type: Number,
+          value: 0
+        },
+          /**
+       * Causes the player to begin playing the video at the given number of seconds from the start of the video
+       * @type {Number}
+       */
+        start: {
+          type: Number,
+          value: 0
+        },
+         /**
+       * Specifies whether the initial video will automatically start to play when the player loads
+       * @type {Number}
+       */
+        autoplay: {
+          type: Number,
+          value: 0
+        },
+         /**
+       * The URL of an image to use as a custom thumbnail
+       * @type {Number}
+       */
+        thumbnail: {
+          type: String,
+          value: ''
+        },
+      },
+
+      /**
+       * Don't set the video id until the player is attached to delay
+       * loading the api until after other scripts have run
+       */
+      attached: function() {
+
+        this.$.player.videoId = this.videoId;
+
+      },
+
+      /**
+       * Pause player
+       */
+      pause: function() {
+
+        this.$.player.pause();
+
+      },
+
+      /**
+       * Check if playing
+       * @return {boolean}
+       */
+      isPlaying: function() {
+
+        return this.$.player.state === YT.PlayerState.PLAYING;
+
+      },
+
+      /**
+       * Check For Video Playing function
+       * Pauses any other video playing if video is selected to play.
+       */
+
+      _checkForVideoPlaying: function(e) {
+
+        if (this.isPlaying()) {
+
+          players.prev = players.next;
+          players.next = this.$.player;
+
+          if (players.prev && players.next && players.next !== players.prev) {
+            players.prev.pause();
+          }
+
+        }
+
+      }
+    });
+  })();
+  </script>
+</dom-module>
