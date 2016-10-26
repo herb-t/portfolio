@@ -416,6 +416,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      */
     _routeChanged: function(newValue, oldValue) {
 
+      this.$.scroll.scrollToTop();
+
       if(newValue.path === '' || newValue.path === null) {
         this.set('route.path', '/projects');
       }
