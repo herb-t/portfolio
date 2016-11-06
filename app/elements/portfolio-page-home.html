@@ -102,7 +102,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <section class="l-project-grid">
 
-        <template is="dom-repeat" items="{{projects}}" as="project">
+        <iron-ajax
+            auto
+            url="../content.json"
+            handle-as="json"
+            last-response="{{response}}"
+            debounce-duration="300">
+        </iron-ajax>
+
+        <template is="dom-repeat" items="{{response}}" as="project">
 
             <portfolio-project url="{{project.url}}" image="{{project.image}}" alt="{{project.alt}}" title="{{project.title}}"></portfolio-project>
 
@@ -127,67 +135,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       is: 'portfolio-home',
 
-      ready: function() {
-
-        this.projects = [
-          {
-            title: 'YouTube Rewind',
-            url: '#/rewind',
-            image: 'images/thumbnails/logo-rewind.png',
-            alt: 'YouTube Rewind Logo'
-          },
-          {
-            title: 'YouTube NextUp',
-            url: '#/nextup',
-            image: 'images/thumbnails/logo-nextup.png',
-            alt: 'Project Logo'
-          },
-          {
-            title: 'Artifact',
-            url: '#/artifact-holiday-memory',
-            image: 'images/thumbnails/memory.png',
-            alt: 'Artifact Holiday Memory'
-          },
-          {
-            title: 'YouTube Creatorhub',
-            url: '#/creator-hub',
-            image: 'images/thumbnails/logo-creator.png',
-            alt: 'Project Logo'
-          },
-          {
-            title: 'Descent 7',
-            url: '#/descent-7',
-            image: 'images/thumbnails/sub.png',
-            alt: 'Project Logo'
-          },
-          {
-            title: 'Terra Bella',
-            url: '#/terra-bella',
-            image: 'images/thumbnails/logo-terra-bella.png',
-            alt: 'Project Logo'
-          },
-          {
-            title: 'Kraft Star Wars',
-            url: '#/kraft-mac-n-cheese',
-            image: 'images/thumbnails/logo-sw.png',
-            alt: 'Kraft Star Wars Mac n Cheese'
-          },
-          {
-            title: 'Stitches',
-            url: '#/stitches',
-            image: 'images/thumbnails/logo-stitches.png',
-            alt: 'Project Logo'
-          },
-          {
-            title: 'Holiday Card',
-            url: '#/holiday-slots',
-            image: 'images/thumbnails/logo-slots.png',
-            alt: 'Holiday Slots'
-          }
-
-        ];
-      },
-     
       /**
        * Fires an event to scroll the page to the top
        * @function
