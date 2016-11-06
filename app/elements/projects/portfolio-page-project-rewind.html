@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../portfolio-page-project.html">
+<link rel="import" href="../youtube-player.html">
 
 <dom-module id="portfolio-page-project-rewind">
   <template>
@@ -30,7 +31,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <section content>
 
-        <iron-image preload fade src="../../images/preview/preview-rewind.jpg"></iron-image>       
+        <iron-image preload fade src="../../images/preview/preview-rewind.jpg"></iron-image>
+
+        <youtube-player
+          video-id="KK9bwTlAvgo"
+          height="auto"
+          width="100%">
+        </youtube-player>
+
       </section>
 
     </portfolio-page-project>
