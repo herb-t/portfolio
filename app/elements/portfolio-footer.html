@@ -50,32 +50,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 0;
       }
 
+      .icon {
+        width: 30px;
+        height: 30px;
+        color: var(--white);
+        
+        -webkit-transition: none;
+           -moz-transition: none;
+            -ms-transition: none;
+             -o-transition: none;
+                transition: none;
+      }
+
       .footer-content li {
-        margin: 0 50px 0 0;
+        margin: 0 40px 0 0;
         padding: 0;
         
       }
 
-/*      .footer-content li:last-child {
-        margin-right: 0;
-        
-      }*/
-
-      .icon {
-        width: 40px;
-        height: 40px;
-        color: var(--white);
-      }
-
-      @media screen and (max-width: 767px) {
-        .icon {
-          width: 30px;
-          height: 30px;
+      @media screen and (min-width: 767px) {
+        .footer-content li {
+          margin: 0 50px 0 0;
+          
+          
         }
 
-        .footer-content li {
-          margin: 0 40px 0 0;
+        .icon {
+          width: 40px;
+          height: 40px;
           
+          -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+             -ms-transition: all 0.3s ease-in-out;
+              -o-transition: all 0.3s ease-in-out;
+                 transition: all 0.3s ease-in-out;       
+        }
+
+        .icon:hover {
+          color: var(--logo-red);
         }
       }
 

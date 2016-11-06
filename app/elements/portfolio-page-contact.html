@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="portfolio-footer.html">
 
 <dom-module id="portfolio-contact">
@@ -20,24 +21,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       main {
         @apply(--layout-flex);
-        -webkit-align-items: flex-end;
-                align-items: flex-end;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: flex-end;
+                justify-content: flex-end;
         position: relative;
         overflow: hidden;
         width: 100%;
         max-width: 100%;
         height: 79vh;
-        background: url('../images/contact-bg.jpg');
-        background-repeat: no-repeat;
-        background-position: center center;
-        -webkit-background-size: cover;
-             -o-background-size: cover;
-                background-size: cover;
       }
 
       section {
-        text-align: right;
+        text-align: center;
         color: #FFFFFF;
+        position: relative;
+        z-index: 2;
       }
 
       h1 {
@@ -50,10 +49,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         line-height: 42px;
       }
 
+      .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
       @media screen and (max-width: 767px) {
         main {
-          background-position: center right;
-          height: 75vh;
+          height: 76vh;
+          -webkit-align-items: center;
+                  align-items: center;
         }
 
         h1 {
@@ -71,8 +81,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
     
     <main>
+
+      <iron-image class="bg-image" preload fade sizing="cover" src="../images/contact-bg.jpg"></iron-image>
       
-      <section class="l-content-container">
+      <section>
 
         <h1>Herb Torres</h1>
         <h3>(678)353-1893</h3>
