@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../portfolio-page-project.html">
+<link rel="import" href="../youtube-player.html">
 
 <dom-module id="portfolio-page-project-descent">
   <template>
@@ -19,18 +20,75 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
+      dl {
+        padding: 0;
+        margin: 0;
+      }
+
+      dt,
+      dd {
+        list-style: none;
+      }
+
+      dt {
+        font-weight: 700;
+        line-height: 28px;
+        text-decoration: underline;
+      }
+
+      dd {
+        margin-left: 10px;
+        line-height: 24px;
+      }
+
+      dd a {
+        text-decoration: none;
+        color: var(--logo-black);
+        font-weight: 400;
+      }
+
     </style>
 
-    <portfolio-page-project title="Descent 7" link="https://terrabella.google.com/">
+    <portfolio-page-project title="Descent 7" link="https://www.youtube.com/watch?v=mlqqWPWiv6Q">
 
       <aside sidebar>
 
-        <p>While attending The Creative Circus in Atlanta, I was part of a team that designed and developed a game for Unity. This underwater adventure has the user navigate a sub through a post apocalyptic world..</p>
+        <p>Explore the deep sea in this interactive runner game. I was one of two developers that worked on level layout and sprite animations. It was truly a team effort to conceptualize and execute a complete game in 10 weeks.</p>
+
+        <dl>
+          <dt>Designers</dt>
+          <dd><a href="#" target="_blank">Abby Pickus</a></dd>
+          <dd><a href="#">Lauren Warr</a></dd>
+
+          <dt>Developers</dt>
+          <dd><a href="#" target="_blank">Brad Murphy</a></dd>
+          <dd><a href="#">Yours Truly</a></dd>
+
+          <dt>Art Direction</dt>
+          <dd><a href="#" target="_blank">Adam Danielson</a></dd>
+
+          <dt>Copywriting</dt>
+          <dd><a href="#" target="_blank">Joe DelValle</a></dd>
+        </dl>
+
+ <!--        <ul>
+          <li><strong>Designers:</strong>  & </li>
+          <li><strong>Developers:</strong>  & </li>
+          <li><strong>Art Direction:</strong> </li>
+          <li><strong>Copywriting:</strong> </li>
+        </ul> -->
+
       </aside>
 
       <section content>
 
-        <iron-image preload fade src="../../images/preview/preview-terra.jpg"></iron-image>       
+        <!-- <iron-image preload fade src="../../images/preview/preview-terra.jpg"></iron-image> -->
+
+        <youtube-player
+          video-id="mlqqWPWiv6Q"
+          height="auto"
+          width="100%">
+        </youtube-player>     
       </section>
 
     </portfolio-page-project>

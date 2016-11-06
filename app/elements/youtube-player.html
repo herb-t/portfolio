@@ -14,11 +14,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/promise-polyfill/promise-polyfill.html">
 
 <!--
-`<hook-yt-player>` is a wrapper for the `<google-youtube>` video element and contains several parameters which can be seen below.  Parameter definitions can be seen here: https://elements.polymer-project.org/elements/google-youtube
+`<youtube-player>` is a wrapper for the `<google-youtube>` video element and contains several parameters which can be seen below.  Parameter definitions can be seen here: https://elements.polymer-project.org/elements/google-youtube
 
 Example:
 
-    <hook-yt-player
+    <youtube-player
       id="text..."
       height="number..."
       width="number..."
@@ -26,13 +26,13 @@ Example:
       start="number..."
       autoplay="number..."
       thumbnail="text...">
-    </hook-yt-player>
+    </youtube-player>
 
-@element hook-yt-player
+@element youtube-player
 @demo demo/index.html
 -->
 
-<dom-module id="hook-yt-player">
+<dom-module id="youtube-player">
   <template>
     <style>
 
@@ -72,7 +72,7 @@ Example:
     var players = {prev: null, next: null};
 
     Polymer({
-      is: 'hook-yt-player',
+      is: 'youtube-player',
 
       /**
        * Element Properties
