@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Title</title>
+    <title>Herb Torres</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -24,17 +24,28 @@
 
     <!-- elements -->
     <link rel="import" href="elements/elements.html">
+
+    <style>
+        body {
+            -webkit-transition: opacity 0.2s ease-in;
+               -moz-transition: opacity 0.2s ease-in;
+                -ms-transition: opacity 0.2s ease-in;
+                 -o-transition: opacity 0.2s ease-in;
+                    transition: opacity 0.2s ease-in;
+        }
+
+        body[unresolved] {
+            position: relative;
+            overflow: hidden;
+            display: block;
+            opacity: 0;
+        }
+    </style>
   </head>
 
-  <body unresolved class="fullbleed layout vertical">
+  <body unresolved>
 
-    <!-- <portfolio-app></portfolio-app> -->
-    
-    <template is="dom-bind" id="main">
-
-        <portfolio-main></portfolio-main>
-
-    </template>
+    <portfolio-main></portfolio-main>
 
   </body>
 </html>

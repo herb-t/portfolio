@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<!-- <link rel="import" href="../bower_components/google-youtube/google-youtube.html"> -->
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
 <link rel="import" href="portfolio-footer.html">
 <link rel="import" href="portfolio-project.html">
 
@@ -21,9 +21,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
-      /*main {
-        min-height: 80vh;
-      }*/
+      main {
+        min-height: 85vh;
+      }
 
       .l-project-grid {
         display: -webkit-box;
@@ -95,28 +95,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
+      #loader {
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+        
+        -webkit-transform: translateX(-50%);
+           -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+             -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+      }
+
+
 
     </style>
 
-    <main class="l-content-container">      
+    <main class="l-content-container">
 
-      <section class="l-project-grid">
+      <!-- spinner loader -->
+      <div id="loader">
+        <paper-spinner-lite active="{{projectsEmpty}}"></paper-spinner-lite>
+      </div>
 
-        <iron-ajax
-            auto
-            url="../content.json"
-            handle-as="json"
-            last-response="{{response}}"
-            debounce-duration="300">
-        </iron-ajax>
+      <iron-ajax
+          auto
+          url="../content.json"
+          handle-as="json"
+          last-response="{{response}}"
+          debounce-duration="300">
+      </iron-ajax> 
 
-        <template is="dom-repeat" items="{{response}}" as="project">
+      <template is="dom-if" if="{{!projectsEmpty}}">
+        <section class="l-project-grid">
 
-            <portfolio-project url="{{project.url}}" image="{{project.image}}" alt="{{project.alt}}" title="{{project.title}}"></portfolio-project>
+          <template is="dom-repeat" items="{{response}}" as="project">
 
-        </template>
-      
-      </section>
+              <portfolio-project url="{{project.url}}" image="{{project.image}}" alt="{{project.alt}}" title="{{project.title}}"></portfolio-project>
+
+          </template>
+        
+        </section>
+      </template>
 
     </main>
     
@@ -134,6 +162,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @prop
        */
       is: 'portfolio-home',
+
+      properties: {
+        response: {
+          type: Array,
+          notify: true
+        },
+
+        projectsEmpty: {
+          type: Boolean,
+          value: true,
+          computed: '_computeProjectsEmpty(response)'
+        }
+      },
+
+      _computeProjectsEmpty: function(response) {
+        return response.length === 0;
+      },
 
       /**
        * Fires an event to scroll the page to the top
