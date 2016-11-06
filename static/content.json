@@ -18,15 +18,21 @@
 	  "alt": "Artifact Holiday Memory"
 	},
 	{
-	  "title": "YouTube Creatorhub",
-	  "url": "#/creator-hub",
-	  "image": "images/thumbnails/logo-creator.png",
-	  "alt": "Project Logo"
+	  "title": "HTML5 Banner Ads",
+	  "url": "#/banners",
+	  "image": "images/thumbnails/badge.png",
+	  "alt": "Banner Ads"
 	},
 	{
 	  "title": "Descent 7",
 	  "url": "#/descent-7",
 	  "image": "images/thumbnails/sub.png",
+	  "alt": "Project Logo"
+	},
+	{
+	  "title": "YouTube Creatorhub",
+	  "url": "#/creator-hub",
+	  "image": "images/thumbnails/logo-creator.png",
 	  "alt": "Project Logo"
 	},
 	{

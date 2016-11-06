@@ -39,6 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       a {
         color: #000;
         font-weight: 700;
+        text-decoration: none;
       }
 
       ul,
@@ -63,7 +64,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       #about-header {
         display: block;
-        width: 300px;
+        width: 100%;
+        max-width: 300px;
         height: 100%;
         margin: 0 auto 20px auto;
         
@@ -86,11 +88,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-right: 0;
       }
 
+      .desktop {
+        display: block;
+      }
+
+      .mobile {
+        display: none;
+      }
+
       @media screen and (max-width: 767px) {
         main {
           display: block;
           min-height: 1px;
           height: auto;
+        }
+
+        #about-header {
+          margin: 20px auto;
+          -webkit-order: 1;
+              -ms-order: 1;
+                  order: 1;
+        }
+
+        #image {
+          margin-right: 0;
         }
 
         ul,
@@ -105,6 +126,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               -ms-flex-direction: column;
                   flex-direction: column;
         }
+
+        .desktop {
+          display: none;
+        }
+
+        .mobile {
+          display: block;
+        }
       }
 
     </style>
@@ -114,7 +143,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <section>
 
         <div id="image">
-          <iron-image preload fade src="../images/about-img.jpg"></iron-image>
+          <iron-image class="desktop" preload fade src="../images/about-img.jpg"></iron-image>
+          <iron-image class="mobile" preload fade src="../images/bg-about-family.jpg"></iron-image>
         </div>
 
         <div id="content">
@@ -155,15 +185,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <p>I'm a front end developer based out of Ann Arbor, Michigan where I live with my lovely wife and two little rugrats. I'm originally from Grand Rapids, Michigan but lived in Atlanta, Georgia for a little over 20 years. I’ve always had an interest in design and user interaction. In addition, I love to solve problems, and I seem to thrive in chaotic environments. As it turns out, that is the perfect mix for a frontend developer.</p>
 
-          <p>Currenly, I am working at <a href="http://byhook.com/work" target="_blanbk">Hook Studios</a> here in Ann Arbor.</p>
+          <p>Currenly, I am working at <a href="http://byhook.com/work" target="_blank">Hook Studios</a> here in Ann Arbor.</p>
 
           <p>When i'm not working, I spend most my free time with the family but I also have been known to shoot some basketball and play a mean Imperial Templar DPS on Elder Scrolls Online for the PS4.</p>
 
-          <ul>
+          <!-- <ul>
             <li><iron-image preload fade src="../images/badge-certified.png"></iron-image></li>
             <li><iron-image preload fade src="../images/badge-YTMasthead.png"></iron-image></li>
             <li><iron-image preload fade src="../images/badge-HTML5.png"></iron-image></li>
-          </ul>
+          </ul> -->
 
         </div>
 
