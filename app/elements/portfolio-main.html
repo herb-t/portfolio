@@ -449,6 +449,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
     },
+    listeners: {
+      'google-youtube-state-change': 'onYouTubeStateChange',
+      'stop-current-video': 'stopCurrentVideo'
+    },
+
+    onYouTubeStateChange: function(e, detail) {
+      var state = detail.data;
+      var player = detail.target;
+      if (player !== this._player && state === YT.PlayerState.PLAYING) {
+        this.stopCurrentVideo();
+        this._player = player;
+      }
+    },
+
+    stopCurrentVideo: function() {
+      if (this._player) {
+        this._player.stopVideo();
+        this._player = null;
+      }
+    },
     /**
      * Sets route after element is attached to document
      * @function
@@ -475,6 +495,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       this.handleScrollTop();
+      this.stopCurrentVideo();
 
     },
     /**

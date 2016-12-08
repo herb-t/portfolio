@@ -139,7 +139,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <template is="dom-repeat" items="{{response}}" as="project">
 
-              <portfolio-project url="{{project.url}}" image="{{project.image}}" alt="{{project.alt}}" title="{{project.title}}"></portfolio-project>
+              <portfolio-project url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]" placeholder="[[project.placeholder]]"></portfolio-project>
 
           </template>
         

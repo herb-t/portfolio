@@ -27,7 +27,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-decoration: none;
       }
 
-      a:hover > figure img {
+      iron-image {
+        -webkit-transition: opacity 0.3s ease-in-out;
+           -moz-transition: opacity 0.3s ease-in-out;
+            -ms-transition: opacity 0.3s ease-in-out;
+             -o-transition: opacity 0.3s ease-in-out;
+                transition: opacity 0.3s ease-in-out;
+          
+        --iron-image-placeholder: {
+          background-repeat: no-repeat;
+          background-position: center center;
+          -webkit-background-size: contain;
+               -o-background-size: contain;
+                  background-size: contain;
+        }
+      }
+
+      a:hover > figure iron-image {
         opacity: 0.15;
       }
 
@@ -45,13 +61,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 100%;
         max-width: 100%;
         height: auto;
-        /*-webkit-border-radius: 50%;
-                border-radius: 50%;*/
-        -webkit-transition: opacity 0.3s ease-in-out;
-           -moz-transition: opacity 0.3s ease-in-out;
-            -ms-transition: opacity 0.3s ease-in-out;
-             -o-transition: opacity 0.3s ease-in-out;
-                transition: opacity 0.3s ease-in-out;
       }
 
       figcaption {
@@ -86,8 +95,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <a href="{{url}}">
       <figure>
 
-        <img src="{{image}}" alt="{{alt}}">
-       <!--  <iron-image spreload fade src="{{image}}" alt="{{alt}}"></iron-image> -->
+        <!-- <img src="{{image}}" alt="{{alt}}"> -->
+        <iron-image preload fade src="[[image]]" placeholder="[[placeholder]]" alt="[[alt]]"></iron-image>
 
         <figcaption>
           <span>{{title}}</span>
@@ -125,6 +134,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: String,
           value: 'Portfolio Project'
         },
+
+        placeholder: String,
 
         title: String
       }
