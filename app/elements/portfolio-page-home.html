@@ -107,7 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 align-items: center;
         -webkit-justify-content: center;
                 justify-content: center;
-        
+
         -webkit-transform: translateX(-50%);
            -moz-transform: translateX(-50%);
             -ms-transform: translateX(-50%);
@@ -132,22 +132,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           handle-as="json"
           last-response="{{response}}"
           debounce-duration="300">
-      </iron-ajax> 
+      </iron-ajax>
 
       <template is="dom-if" if="{{!projectsEmpty}}">
         <section class="l-project-grid">
 
           <template is="dom-repeat" items="{{response}}" as="project">
 
-              <portfolio-project url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]" placeholder="[[project.placeholder]]"></portfolio-project>
+              <portfolio-project url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project>
 
           </template>
-        
+
         </section>
       </template>
 
     </main>
-    
+
     <portfolio-footer></portfolio-footer>
 
   </template>
