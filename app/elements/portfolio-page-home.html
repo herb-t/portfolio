@@ -139,7 +139,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <template is="dom-repeat" items="{{response}}" as="project">
 
-              <portfolio-project url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project>
+              <portfolio-project class="portfolio-project" url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project>
 
           </template>
 
@@ -173,7 +173,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: Boolean,
           value: true,
           computed: '_computeProjectsEmpty(response)'
+        },
+
+        /**
+         * Array of image src's
+         * @type {!Array.<!string>}
+         */
+        images: {
+          type: Array
+        },
+        /**
+         * Array of images that have been loaded
+         * @type {!Array.<!Image>}
+         */
+        loadedImages: {
+          type: Array,
+          value: function(){
+            return [];
+          }
         }
+      },
+
+      attached: function() {
+
+        var tl = new TimelineLite({paused: true});
+        //tl.from('.l-project-grid', 0.75, {opacity: 0});
+        tl.staggerFrom('.portfolio-project', 0.5, {y: 20, opacity: 0, ease: Expo.easeOut}, 0.05);
+
+        var images = [
+          'images/thumbnails/logo-rewind.png',
+          'images/thumbnails/logo-rewind-16.png',
+          'images/thumbnails/logo-nextup.png',
+          'images/thumbnails/memory.png',
+          'images/thumbnails/logo-ats.png',
+          'images/thumbnails/badge.png',
+          'images/thumbnails/sub.png',
+          'images/thumbnails/logo-stitches.png',
+          'images/thumbnails/logo-starwars.png',
+          'images/thumbnails/logo-slots-alt.png',
+          'images/thumbnails/logo-creator.png',
+          'images/thumbnails/logo-terra-bella.png'
+        ];
+
+        this.preloadImages(images, function() {
+          console.log('images loaded');
+          tl.play();
+        });
+
       },
 
       _computeProjectsEmpty: function(response) {
@@ -186,6 +232,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       scrollToTop: function() {
         this.fire('scroll-top');
+      },
+
+      /**
+       * @param {!Array.<!Image>} images Array of images to load.
+       * @param {function} callback Callback for image load completion.
+       */
+      preloadImages: function(images, callback) {
+
+          //array of images
+          this.images = images;
+
+          var counter = 0;
+
+          //wait for final load to be complete before callback
+          var loadComplete = function(e) {
+            counter++;
+            if(counter === images.length && callback){
+              callback(this.loadedImages);
+            }
+          }.bind(this);
+
+          //loop over array && load images
+          for(var i = 0; i < images.length; i++){
+            this.loadedImages[i] = new Image();
+            this.loadedImages[i].src = images[i];
+            this.loadedImages[i].onload = loadComplete;
+            this.loadedImages[i].onError = loadComplete;
+          }
+
       }
 
     });
