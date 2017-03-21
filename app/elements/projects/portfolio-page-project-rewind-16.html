@@ -1,0 +1,64 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../portfolio-page-project.html">
+<link rel="import" href="../youtube-player.html">
+
+<dom-module id="portfolio-page-project-rewind-16">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+    </style>
+
+    <portfolio-page-project title="YouTube Rewind 2016" link="https://rewind2016.withyoutube.com/">
+
+      <aside sidebar>
+
+        <p>YouTube Rewind is a celebration and acknoledgement of the top YouTube content creators.  For 2016, Hook Studios designed and developed the a site to showcase a bunch of cool stuff from YouTube. This site celebrates YouTube Rewind 2016 video.</p>
+        <p>Spoiler alert: Danm Daniel makes the video :P</p>
+      </aside>
+
+      <section content>
+
+        <!-- <iron-image preload fade src="../../images/preview/preview-rewind.jpg"></iron-image> -->
+
+        <youtube-player
+          video-id="_GuOjXYl5ew"
+          height="auto"
+          width="100%">
+        </youtube-player>
+
+      </section>
+
+    </portfolio-page-project>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+      /**
+       * Registers element within Polymer.
+       * @constructor
+       */
+      Polymer({
+        /**
+         * Specifies HTML tag name for custom Polymer element.
+         * @prop
+         */
+        is: 'portfolio-page-project-rewind-16'
+
+      });
+  </script>
+</dom-module>

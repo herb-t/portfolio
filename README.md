@@ -1,6 +1,6 @@
 # Herb Torres Portfolio Site
 
-My porftolio scaffold built in Polymer 1.0.
+My portfolio scaffold built in Polymer 1.0.
 
 # Getting Started
 
