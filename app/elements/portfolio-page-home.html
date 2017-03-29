@@ -134,17 +134,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           debounce-duration="300">
       </iron-ajax>
 
-      <template is="dom-if" if="{{!projectsEmpty}}">
+      <!-- <template is="dom-if" if="{{!projectsEmpty}}">
         <section class="l-project-grid">
 
           <template is="dom-repeat" items="{{response}}" as="project">
 
-              <portfolio-project class="portfolio-project" url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project>
+              <portfolio-project class="portfolio-project-card" url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project>
 
           </template>
 
         </section>
-      </template>
+      </template> -->
+      <section class="l-project-grid">
+
+        <template is="dom-repeat" items="{{response}}" as="project">
+
+            <portfolio-project class="portfolio-project-card" url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project>
+
+        </template>
+
+      </section>
 
     </main>
 
@@ -194,11 +203,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
-      attached: function() {
+      attatched: function() {
 
         var tl = new TimelineLite({paused: true});
         //tl.from('.l-project-grid', 0.75, {opacity: 0});
-        tl.staggerFrom('.portfolio-project', 0.5, {y: 20, opacity: 0, ease: Expo.easeOut}, 0.05);
+        tl.staggerFrom('.portfolio-project-card', 0.5, {y: 20, opacity: 0, ease: Expo.easeOut}, 0.05);
 
         var images = [
           'images/thumbnails/logo-rewind.png',
