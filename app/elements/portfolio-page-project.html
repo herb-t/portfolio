@@ -32,7 +32,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       #sidebar {
-        min-height: 80vh;
+        /*min-height: 80vh;*/
+        min-height: calc(100vh - 96px);
         -webkit-flex: 1;
             -ms-flex: 1;
                 flex: 1;
@@ -43,6 +44,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             -ms-flex: 2.5;
                 flex: 2.5;
         text-align: center;
+      }
+
+      #content ::content h2 {
+        text-align: left;
+        font-size: 24px;
+        line-height: 32px;
       }
 
       #content ::content img {
@@ -89,7 +96,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       #visit,
       #sidebar-header {
-        @apply(--layout-flex);      
+        @apply(--layout-flex);
         -webkit-align-items: baseline;
                 align-items: baseline;
         -webkit-justify-content: flex-start;
@@ -167,7 +174,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="l-content-container">
       <div class="l-project-page">
-        
+
         <div id="sidebar">
 
           <div id="sidebar-header">
@@ -189,11 +196,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
 
         <div id="content">
-          <content select="[content]"></content>      
+          <content select="[content]"></content>
         </div>
 
       </div>
-    </div>         
+    </div>
 
   </template>
   <script>

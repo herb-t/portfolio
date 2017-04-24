@@ -29,7 +29,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         overflow: hidden;
         width: 100%;
         max-width: 100%;
-        height: 79vh;
+        /*height: 79vh;*/
+        height: calc(100vh - 196px);
       }
 
       section {
@@ -47,7 +48,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 justify-content: center;
         width: 500px;
         height: 500px;
-        margin-left: 25px;
+        margin: 25px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
         background: url('../images/contact-bg.png')no-repeat center center;
         -webkit-background-size: cover;
              -o-background-size: cover;
@@ -92,15 +95,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       @media screen and (max-width: 767px) {
         main {
-          height: 75vh;
+          /*height: 75vh;*/
           -webkit-align-items: center;
                   align-items: center;
           -webkit-justify-content: center;
                   justify-content: center;
-        }
-
-        section {
-          margin-left: 0;
         }
 
         h1 {
@@ -117,6 +116,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       @media screen and (max-width: 600px) {
+
+        main {
+          height: calc(100vh - 156px);
+        }
 
         section {
           width: 300px;
