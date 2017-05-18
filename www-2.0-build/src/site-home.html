@@ -1,0 +1,145 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="site-home">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      .l-project-grid {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        -ms-flex-line-pack: justify;  /* IE10 */
+        -webkit-justify-content: space-between;
+                justify-content: space-between;
+        padding: 50px 25px;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+
+      @media screen and (max-width: 480px) {
+        .l-project-grid {
+          -webkit-justify-content: center;
+                  justify-content: center;
+          padding: 25px;
+        }
+      }
+
+      .l-project-grid portfolio-project {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+        -webkit-flex: 0 0 30.3333333333%;
+            -ms-flex: 0 0 30.3333333333%;
+                flex: 0 0 30.3333333333%;
+        padding: 1.5%;
+      }
+
+      @media screen and (max-width: 767px) {
+        .l-project-grid portfolio-project {
+          -webkit-flex: 0 0 97%;
+              -ms-flex: 0 0 97%;
+                  flex: 0 0 97%;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        main {
+          min-height: calc(100vh - 156px;)
+        }
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">1</div>
+      <h1>Home</h1>
+    </div>
+
+    <iron-ajax
+      auto
+      url="../data.json"
+      handle-as="json"
+      last-response="{{response}}"
+      on-response="_onResponse"
+      debounce-duration="300">
+    </iron-ajax>
+
+    <!-- <template is="dom-if" if="{{!projectsEmpty}}"> -->
+    <section class="l-content-container">
+      <div class="l-project-grid">
+        <template is="dom-repeat" items="{{response}}" as="project">
+
+          <h1>[[project.title]]</h1>
+          <p>[[project.url]]</p>
+          <img src="../images/[[project.image]]" alt="">
+
+          <!-- <portfolio-project url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project> -->
+
+        </template>
+      </div>
+    </section>
+    <!-- </template> -->
+  </template>
+
+  <script>
+    class siteHome extends Polymer.Element {
+      static get is() { return 'site-home'; }
+
+      static get properties() {
+        return {
+          response: {
+            type: Array,
+            notify: true
+          },
+          projectsEmpty: {
+            type: Boolean,
+            value: true,
+            computed: '_computeProjectsEmpty(response)'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(siteHome.is, siteHome);
+  </script>
+</dom-module>
