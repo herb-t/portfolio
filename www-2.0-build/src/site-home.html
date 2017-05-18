@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="portfolio-project.html">
 
 <dom-module id="site-home">
   <template>
@@ -90,11 +91,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>Home</h1>
-    </div>
-
     <iron-ajax
       auto
       url="../data.json"
@@ -104,21 +100,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       debounce-duration="300">
     </iron-ajax>
 
-    <!-- <template is="dom-if" if="{{!projectsEmpty}}"> -->
     <section class="l-content-container">
       <div class="l-project-grid">
         <template is="dom-repeat" items="{{response}}" as="project">
 
-          <h1>[[project.title]]</h1>
-          <p>[[project.url]]</p>
-          <img src="../images/[[project.image]]" alt="">
-
-          <!-- <portfolio-project url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project> -->
+          <portfolio-project url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project>
 
         </template>
       </div>
     </section>
-    <!-- </template> -->
+
+    <porfolio-footer></porfolio-footer>
+
   </template>
 
   <script>
@@ -130,13 +123,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           response: {
             type: Array,
             notify: true
-          },
-          projectsEmpty: {
-            type: Boolean,
-            value: true,
-            computed: '_computeProjectsEmpty(response)'
           }
         };
+      }
+
+      _onResponse() {
+        console.log(this.response);
       }
     }
 

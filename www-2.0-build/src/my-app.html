@@ -25,10 +25,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="home.html">
 <link rel="lazy-import" href="about.html">
 <link rel="lazy-import" href="contact.html">
-<link rel="lazy-import" href="my-view1.html">
-<link rel="lazy-import" href="my-view2.html">
-<link rel="lazy-import" href="my-view3.html">
 <link rel="lazy-import" href="my-view404.html">
+<link rel="lazy-import" href="portfolio-footer.html">
+<link rel="lazy-import" href="portfolio-page-project.html">
 
 <dom-module id="my-app">
   <template>
@@ -139,15 +138,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
         </app-header>
 
-        <!-- <iron-ajax
-          auto
-          url="../data.json"
-          handle-as="json"
-          last-response="{{response}}"
-          on-response="_onResponse"
-          debounce-duration="300">
-        </iron-ajax> -->
-
         <main id="site__pages">
           <!-- <p>{{response.content.title}}</p> -->
           <iron-pages
@@ -158,6 +148,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <site-home name="site-home"></site-home>
             <site-about name="site-about"></site-about>
             <site-contact name="site-contact"></site-contact>
+            <portfolio-page-project-rewind-16 name="rewind-2016"></portfolio-page-project-rewind-16>
             <my-view404 name="my-view404"></my-view404>
           </iron-pages>
         </main>
@@ -229,7 +220,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             true);
 
         TweenMax.fromTo(this.$.site__pages, 0.75,
-          { opacity: 0, y: 50, ease: Power2.easeIn },
+          { opacity: 0, y: 15, ease: Power2.easeIn },
       		{ opacity: 1, y: 0, ease: Power4.easeOut }
         );
       }

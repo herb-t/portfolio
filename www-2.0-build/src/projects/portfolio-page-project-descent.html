@@ -1,0 +1,113 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../portfolio-page-project.html">
+<link rel="import" href="../youtube-player.html">
+
+<dom-module id="portfolio-page-project-descent">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      dl {
+        padding: 0;
+        margin: 0;
+      }
+
+      dt,
+      dd {
+        list-style: none;
+      }
+
+      dt {
+        font-weight: 700;
+        line-height: 28px;
+        text-decoration: underline;
+      }
+
+      dd {
+        margin-left: 10px;
+        line-height: 24px;
+      }
+
+      dd a {
+        text-decoration: none;
+        color: var(--logo-black);
+        font-weight: 400;
+      }
+
+    </style>
+
+    <portfolio-page-project title="Descent 7" link="https://www.youtube.com/watch?v=mlqqWPWiv6Q">
+
+      <aside sidebar>
+
+        <p>Explore the deep sea in this interactive runner game. I was one of two developers that worked on level layout and sprite animations. It was truly a team effort to conceptualize and execute a complete game in 10 weeks.</p>
+
+        <dl>
+          <dt>Designers</dt>
+          <dd><a href="#" target="_blank">Abby Pickus</a></dd>
+          <dd><a href="#">Lauren Warr</a></dd>
+
+          <dt>Developers</dt>
+          <dd><a href="#" target="_blank">Brad Murphy</a></dd>
+          <dd><a href="#">Yours Truly</a></dd>
+
+          <dt>Art Direction</dt>
+          <dd><a href="#" target="_blank">Adam Danielson</a></dd>
+
+          <dt>Copywriting</dt>
+          <dd><a href="#" target="_blank">Joe DelValle</a></dd>
+        </dl>
+
+ <!--        <ul>
+          <li><strong>Designers:</strong>  & </li>
+          <li><strong>Developers:</strong>  & </li>
+          <li><strong>Art Direction:</strong> </li>
+          <li><strong>Copywriting:</strong> </li>
+        </ul> -->
+
+      </aside>
+
+      <section content>
+
+        <!-- <iron-image preload fade src="../../images/preview/preview-terra.jpg"></iron-image> -->
+
+        <youtube-player
+          video-id="mlqqWPWiv6Q"
+          height="auto"
+          width="100%">
+        </youtube-player>     
+      </section>
+
+    </portfolio-page-project>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+      /**
+       * Registers element within Polymer.
+       * @constructor
+       */
+      Polymer({
+        /**
+         * Specifies HTML tag name for custom Polymer element.
+         * @prop
+         */
+        is: 'portfolio-page-project-descent'
+
+      });
+  </script>
+</dom-module>
