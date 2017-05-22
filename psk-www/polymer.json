@@ -1,0 +1,42 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/portfolio-main.html",
+  "fragments": [
+    "src/portfolio-main.html",
+    "src/my-view2.html",
+    "src/my-view3.html",
+    "src/portfolio-main.html",
+    "src/portfolio-project.html",
+    "src/portfolio-page-home.html",
+    "src/portfolio-page-about.html",
+    "src/portfolio-page-contact.html",
+    "src/portfolio-page-project.html",
+    "src/portfolio-footer.html",
+    "src/projects/portfolio-page-project-artifact.html",
+    "src/projects/portfolio-page-project-ats.html",
+    "src/projects/portfolio-page-project-banners.html",
+    "src/projects/portfolio-page-project-codepens.html",
+    "src/projects/portfolio-page-project-creator.html",
+    "src/projects/portfolio-page-project-descent.html",
+    "src/projects/portfolio-page-project-kaiya.html",
+    "src/projects/portfolio-page-project-kraft.html",
+    "src/projects/portfolio-page-project-nextup.html",
+    "src/projects/portfolio-page-project-rewind.html",
+    "src/projects/portfolio-page-project-rewind-2016.html",
+    "src/projects/portfolio-page-project-slots.html",
+    "src/projects/portfolio-page-project-stitches.html",
+    "src/projects/portfolio-page-project-terra.html",
+    "src/my-view404.html"
+  ],
+  "sourceGlobs": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "content.json",
+    "bower_components/webcomponentsjs/webcomponents.min.js",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

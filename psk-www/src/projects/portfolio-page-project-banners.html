@@ -1,0 +1,115 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../portfolio-page-project.html">
+
+<dom-module id="portfolio-page-project-banners">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .demo {
+        width: 300px;
+        height: 600px;
+        margin: 0 auto;
+        outline: none;
+        border: none;
+      }
+
+      ul {
+        @apply(--layout-flex);
+        -webkit-align-items: flex-start;
+                align-items: flex-start;
+        padding: 0;
+        margin: 25px 0;
+      }
+
+      ul li {
+        list-style: none;
+        margin-right: 1%;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+      }
+
+      ul li:last-child {
+        margin-right: 0;
+      }
+
+      ul li iron-image ::content img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--logo-black);
+        font-weight: 700;
+      }
+
+      /* visit override */
+      portfolio-page-project ::content #visit {
+        display: none;
+      }
+
+      @media screen and (max-width: 767px) {
+        ul {
+          -webkit-align-items: center;
+                  align-items: center;
+        }
+      }
+
+    </style>
+
+    <portfolio-page-project title="Banner Ads" link="http://dev.herbtorres.com/banner-example/">
+
+      <aside sidebar>
+
+        <p>When it comes to digital marketing, you really get a bang for your buck with banner ads.  Now that HTML5 banners have made Flash banners obsolete, it's important to be able to build great banners while still keeping a low fileweight.  I predominantly work with Google's <a href="https://www.doubleclickbygoogle.com/" target="_blank">Double Click</a> for managing and distributing banners.</p>
+
+        <ul>
+          <li><iron-image preload fade src="../../images/badge-certified.png"></iron-image></li>
+          <li><iron-image preload fade src="../../images/badge-YTMasthead.png"></iron-image></li>
+          <li><iron-image preload fade src="../../images/badge-HTML5.png"></iron-image></li>
+        </ul>
+
+      </aside>
+
+      <section content>
+
+        <iframe class="demo" src="http://dev.herbtorres.com/banner-example/"></iframe>
+
+      </section>
+
+    </portfolio-page-project>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+      /**
+       * Registers element within Polymer.
+       * @constructor
+       */
+      Polymer({
+        /**
+         * Specifies HTML tag name for custom Polymer element.
+         * @prop
+         */
+        is: 'portfolio-page-project-banners'
+
+      });
+  </script>
+</dom-module>

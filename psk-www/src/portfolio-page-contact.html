@@ -1,0 +1,193 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="portfolio-footer.html">
+
+<dom-module id="portfolio-contact">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      main {
+        @apply(--layout-flex);
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: flex-start;
+                justify-content: flex-start;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        /*height: 79vh;*/
+        height: calc(100vh - 196px);
+      }
+
+      section {
+        text-align: center;
+        color: #FFFFFF;
+        position: relative;
+        z-index: 0;
+        @apply(--layout-flex);
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+        width: 500px;
+        height: 500px;
+        margin: 25px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        background: url('../images/contact-bg.png')no-repeat center center;
+        -webkit-background-size: cover;
+             -o-background-size: cover;
+                background-size: cover;
+      }
+
+      h1 {
+        font-size: 48px;
+        line-height: 52px;
+        margin: 40px 0 10px 0;
+      }
+
+      h3 {
+        font-size: 36px;
+        line-height: 42px;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      h4 {
+        margin: 20px 0 0 0;
+        letter-spacing: 1px;
+      }
+
+      .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        z-index: 0;
+
+        --iron-image-placeholder: {
+          background-repeat: no-repeat;
+          background-position: center center;
+          -webkit-background-size: cover;
+               -o-background-size: cover;
+                  background-size: cover;
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        main {
+          /*height: 75vh;*/
+          -webkit-align-items: center;
+                  align-items: center;
+          -webkit-justify-content: center;
+                  justify-content: center;
+        }
+
+        h1 {
+          font-size: 38px;
+          line-height: 44px;
+          margin: 20px 0 10px 0;
+        }
+
+        h3 {
+          font-size: 32px;
+          line-height: 38px;
+        }
+
+      }
+
+      @media screen and (max-width: 600px) {
+
+        main {
+          height: calc(100vh - 156px);
+        }
+
+        section {
+          width: 300px;
+          height: 300px;
+        }
+
+        h1 {
+          font-size: 28px;
+          line-height: 32px;
+        }
+
+        h3 {
+          font-size: 22px;
+          line-height: 36px;
+        }
+
+        h4 {
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+      }
+
+    </style>
+
+    <main>
+
+      <iron-image class="bg-image" preload fade sizing="cover" src="../images/contact-bg.jpg" placeholder="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAKAAD/4QMdaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzEzOCA3OS4xNTk4MjQsIDIwMTYvMDkvMTQtMDE6MDk6MDEgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBGNTc1QzA0QkQ2RjExRTZBOTFCRkU0NUNFRTU5OTg3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBGNTc1QzAzQkQ2RjExRTZBOTFCRkU0NUNFRTU5OTg3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE3IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0iRDJBQzQyNDkyNDdDQzQ1MkE5ODY1NTZEODY0MjE5NEEiIHN0UmVmOmRvY3VtZW50SUQ9IkQyQUM0MjQ5MjQ3Q0M0NTJBOTg2NTU2RDg2NDIxOTRBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQAFBAQGRIZJxcXJzImHyYyLiYmJiYuPjU1NTU1PkRBQUFBQUFERERERERERERERERERERERERERERERERERERERAEVGRkgHCAmGBgmNiYgJjZENisrNkREREI1QkRERERERERERERERERERERERERERERERERERERERERERERERERE/8AAEQgACwATAwEiAAIRAQMRAf/EAF0AAQEBAQAAAAAAAAAAAAAAAAQAAwUBAQAAAAAAAAAAAAAAAAAAAAAQAAAEBQMFAAAAAAAAAAAAAAAxAgQBEZESAyFhM3GB0UIFEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwBjHK3t1nQDdfQQ4wrx2RSooRmXXwM2s9+0hzMvKoz9ABrdeRJ71EC0EA//2Q==">
+
+      </iron-image>
+
+      <section>
+
+        <h1>Herb Torres</h1>
+        <h3>(678)353-1893</h3>
+        <h4>herbtorres960@gmail.com</h4>
+        <h4>Ann Arbor, Michigan</h4>
+
+      </section>
+
+    </main>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+    /**
+     * Registers element within Polymer.
+     * @constructor
+     */
+    Polymer({
+      /**
+       * Specifies HTML tag name for custom Polymer element.
+       * @prop
+       */
+      is: 'portfolio-contact',
+      /**
+       * Declares properties on custom Polymer element.
+       *
+       */
+      properties: {
+
+      },
+
+      scrollToTop: function() {
+        this.fire('scroll-top');
+      }
+
+    });
+  </script>
+</dom-module>

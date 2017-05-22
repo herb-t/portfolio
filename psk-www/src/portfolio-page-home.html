@@ -1,0 +1,205 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
+<link rel="import" href="portfolio-footer.html">
+<link rel="import" href="portfolio-project.html">
+
+<dom-module id="portfolio-home">
+  <template>
+    <style include="shared-styles">
+
+      :host {
+        display: block;
+      }
+
+      main {
+        /*min-height: 85vh;*/
+        min-height: calc(100vh - 196px);
+      }
+
+      .l-project-grid {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        -ms-flex-line-pack: justify;  /* IE10 */
+        -webkit-justify-content: space-between;
+                justify-content: space-between;
+        padding: 50px 25px;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+
+      @media screen and (max-width: 480px) {
+        .l-project-grid {
+          -webkit-justify-content: center;
+                  justify-content: center;
+          padding: 25px;
+        }
+      }
+
+      .l-project-grid portfolio-project {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+        -webkit-flex: 0 0 30.3333333333%;
+            -ms-flex: 0 0 30.3333333333%;
+                flex: 0 0 30.3333333333%;
+        padding: 1.5%;
+      }
+
+      @media screen and (max-width: 767px) {
+        .l-project-grid portfolio-project {
+          -webkit-flex: 0 0 97%;
+              -ms-flex: 0 0 97%;
+                  flex: 0 0 97%;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        main {
+          min-height: calc(100vh - 156px;)
+        }
+      }
+
+      /*@media screen and (max-width: 480px) {
+        .l-project-grid portfolio-project {
+          -webkit-flex: 0 0 97%;
+              -ms-flex: 0 0 97%;
+                  flex: 0 0 97%;
+        }
+      }*/
+
+      #loader {
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+
+        -webkit-transform: translateX(-50%);
+           -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+             -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+      }
+
+
+
+    </style>
+
+    <main class="l-content-container">
+
+      <!-- spinner loader -->
+      <div id="loader">
+        <paper-spinner-lite active="{{projectsEmpty}}"></paper-spinner-lite>
+      </div>
+
+      <iron-ajax
+          auto
+          url="../content.json"
+          handle-as="json"
+          last-response="{{response}}"
+          on-response="_onResponse"
+          debounce-duration="300">
+      </iron-ajax>
+
+      <template is="dom-if" if="{{!projectsEmpty}}">
+        <section class="l-project-grid">
+
+          <template is="dom-repeat" items="{{response}}" as="project">
+
+              <portfolio-project url="[[project.url]]" image="[[project.image]]" alt="[[project.alt]]" title="[[project.title]]"></portfolio-project>
+
+          </template>
+
+        </section>
+      </template>
+
+    </main>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+    /**
+     * Registers element within Polymer.
+     * @constructor
+     */
+    Polymer({
+      /**
+       * Specifies HTML tag name for custom Polymer element.
+       * @prop
+       */
+      is: 'portfolio-home',
+
+      properties: {
+        response: {
+          type: Array,
+          notify: true
+        },
+
+        projectsEmpty: {
+          type: Boolean,
+          value: true,
+          computed: '_computeProjectsEmpty(response)'
+        }
+      },
+
+      _computeProjectsEmpty: function(response) {
+        return response.length === 0;
+      },
+
+      /**
+       * Fires an event to scroll the page to the top
+       * @function
+       */
+      scrollToTop: function() {
+        this.fire('scroll-top');
+      },
+
+      _onResponse: function() {
+        // console.log(this.response);
+      }
+
+    });
+  </script>
+</dom-module>

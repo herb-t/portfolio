@@ -1,0 +1,53 @@
+{
+  "name": "polymer-starter-kit",
+  "license": "BSD-3-Clause",
+  "description": "project template",
+  "scripts": {
+    "build": "gulp",
+    "start": "gulp serve",
+    "preview": "gulp && polymer serve out/static",
+    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "npm run lint && polymer test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hookerz/941_yt_rewind_2016.git"
+  },
+  "author": "matt@byhook.com",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "css-slam": "^1.2.1",
+    "google-spreadsheet": "^2.0.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-crisper": "^1.1.0",
+    "gulp-help": "^1.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-image-data-uri": "^1.2.2",
+    "gulp-image-resize": "^0.10.0",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-shell": "^0.5.2",
+    "imagemin-gifsicle": "^5.1.0",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-pngquant": "^5.0.0",
+    "js-htmlencode": "^0.2.0",
+    "lodash.shuffle": "^4.2.0",
+    "numeral": "^1.5.6",
+    "run-sequence": "^1.2.2",
+    "yargs": "^6.4.0",
+    "eslint": "^3.12.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-plugin-html": "^1.7.0"
+  },
+  "dependencies": {
+    "crisper": "^2.0.2",
+    "image-size": "^0.5.0",
+    "polymer-cli": "^0.17.0"
+  },
+  "config": {
+    "dist": "out"
+  }
+}

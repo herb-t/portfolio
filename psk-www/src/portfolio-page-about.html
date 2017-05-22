@@ -1,0 +1,230 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="portfolio-footer.html">
+
+<dom-module id="portfolio-about">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      main {
+        @apply(--layout-flex);
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-justify-content: center;
+                justify-content: center;
+        /*min-height: 79vh;*/
+        min-height: calc(100vh - 196px);
+      }
+
+      iron-image ::content img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: #000;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      ul,
+      section {
+        @apply(--layout-flex);
+        -webkit-align-items: flex-start;
+                align-items: flex-start;
+      }
+
+      #image {
+        -webkit-flex: 2;
+            -ms-flex: 2;
+                flex: 2;
+        margin-right: 25px;
+      }
+
+      #content {
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+      }
+
+      #about-header {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+        margin: 0 auto 20px auto;
+
+      }
+
+      ul {
+        padding: 0;
+        margin-top: 25px;
+      }
+
+      ul li {
+        list-style: none;
+        margin-right: 1%;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+      }
+
+      ul li:last-child {
+        margin-right: 0;
+      }
+
+      .desktop {
+        display: block;
+      }
+
+      .mobile {
+        display: none;
+      }
+
+      @media screen and (max-width: 767px) {
+        main {
+          display: block;
+          min-height: 1px;
+          height: auto;
+        }
+
+        #about-header {
+          margin: 20px auto;
+          -webkit-order: 1;
+              -ms-order: 1;
+                  order: 1;
+        }
+
+        #image {
+          margin-right: 0;
+        }
+
+        ul,
+        section {
+          -webkit-align-items: center;
+                  align-items: center;
+        }
+
+
+        section {
+          -webkit-flex-direction: column;
+              -ms-flex-direction: column;
+                  flex-direction: column;
+        }
+
+        .desktop {
+          display: none;
+        }
+
+        .mobile {
+          display: block;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        main {
+          min-height: calc(100vh - 156px);
+        }
+      }
+
+    </style>
+
+    <main class="l-content-container">
+
+      <section>
+
+        <div id="image">
+          <iron-image class="desktop" preload fade src="../images/about-img.jpg" placeholder="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAKAAD/4QMdaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzEzOCA3OS4xNTk4MjQsIDIwMTYvMDkvMTQtMDE6MDk6MDEgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkI1NzNBN0YzQkQ2QTExRTZBMTcyQ0NBMDI5NEM4RTkwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkI1NzNBN0YyQkQ2QTExRTZBMTcyQ0NBMDI5NEM4RTkwIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE3IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0iMkM3QzFBODczRUQyNEE5QkVFNkVFODQzMTRBMkEwNjYiIHN0UmVmOmRvY3VtZW50SUQ9IjJDN0MxQTg3M0VEMjRBOUJFRTZFRTg0MzE0QTJBMDY2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQAFBAQGRIZJxcXJzImHyYyLiYmJiYuPjU1NTU1PkRBQUFBQUFERERERERERERERERERERERERERERERERERERERAEVGRkgHCAmGBgmNiYgJjZENisrNkREREI1QkRERERERERERERERERERERERERERERERERERERERERERERERERE/8AAEQgACAANAwEiAAIRAQMRAf/EAF0AAQEBAAAAAAAAAAAAAAAAAAAFBgEBAQAAAAAAAAAAAAAAAAAAAAEQAAEEAQMFAAAAAAAAAAAAAAIAASESEWEDBDFBUSITEQEAAwAAAAAAAAAAAAAAAAAAESFh/9oADAMBAAIRAxEAPwCdxjPbIH2mESqI3HvOJ1WnblDR3u30qxYjrPr4zqiIlTr/2Q==">
+          </iron-image>
+
+          <iron-image class="mobile" preload fade src="../images/bg-about-family.jpg" placeholder="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAKAAD/4QMtaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzEzOCA3OS4xNTk4MjQsIDIwMTYvMDkvMTQtMDE6MDk6MDEgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkZBNzlGOTkyQkQ2QTExRTZCODFCQUJFNjUxRTM5Qjk4IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkZBNzlGOTkxQkQ2QTExRTZCODFCQUJFNjUxRTM5Qjk4IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGRTc0MERGNkE0NzMxMUU2QUMzMUJEQzc5Q0VBNkQwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGRTc0MERGN0E0NzMxMUU2QUMzMUJEQzc5Q0VBNkQwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uAA5BZG9iZQBkwAAAAAH/2wCEABQQEBkSGScXFycyJh8mMi4mJiYmLj41NTU1NT5EQUFBQUFBREREREREREREREREREREREREREREREREREREREQBFRkZIBwgJhgYJjYmICY2RDYrKzZERERCNUJERERERERERERERERERERERERERERERERERERERERERERERERERP/AABEIAAUACgMBIgACEQEDEQH/xABZAAEBAQAAAAAAAAAAAAAAAAAAAQUBAQAAAAAAAAAAAAAAAAAAAAMQAAIABAcAAAAAAAAAAAAAAAARATJiJPAxUXGh0SMRAQEAAAAAAAAAAAAAAAAAAACR/9oADAMBAAIRAxEAPwC+6uXNF6twWNzTu65qcu+QA4R//9k=">
+          </iron-image>
+        </div>
+
+        <div id="content">
+          <!-- svg -->
+          <svg version="1.1" id="about-header" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="96.158px" height="9.865px" viewBox="0 0 96.158 9.865" enable-background="new 0 0 96.158 9.865" xml:space="preserve">
+            <path fill="#CD4829" d="M0,0.176h3.954v1.93H2.038v1.875h1.685v1.901H2.038v3.806H0V0.176z"/>
+            <path fill="#CD4829" d="M4.537,0.176h2.038c0.952,0,1.78,0.245,2.338,0.801c0.503,0.517,0.802,1.25,0.802,2.283v0.136
+              c0,1.304-0.503,2.051-1.114,2.527l1.264,3.765H7.69L6.726,6.59H6.562v3.099H4.537V0.176z M6.63,4.878
+              c0.585,0,1.006-0.367,1.006-1.345V3.329c0-1.019-0.435-1.332-1.02-1.332H6.562v2.881H6.63z"/>
+            <path fill="#CD4829" d="M10.148,5.231V4.634C10.148,1.535,11.235,0,12.961,0c1.713,0,2.8,1.535,2.8,4.634v0.597
+              c0,3.085-1.087,4.634-2.8,4.634C11.235,9.865,10.148,8.316,10.148,5.231z M13.682,5.245V4.606c0-2.228-0.271-2.731-0.721-2.731
+              c-0.448,0-0.733,0.503-0.733,2.731v0.639c0,2.242,0.285,2.732,0.733,2.732C13.41,7.977,13.682,7.486,13.682,5.245z"/>
+            <path fill="#CD4829" d="M16.385,0.176h1.957l1.48,4.294V0.176h1.956v9.512h-1.86l-1.576-4.525v4.525h-1.957V0.176z"/>
+            <path fill="#CD4829" d="M23.558,2.12h-1.249V0.176h4.537V2.12h-1.25v7.569h-2.038V2.12z"/>
+            <path fill="#CD4829" d="M26.749,4.457h3.683v1.97h-3.683V4.457z"/>
+            <path fill="#CD4829" d="M31.178,0.176h4.117v1.93h-2.079v1.848h1.849v1.902h-1.849v1.89h2.12v1.943h-4.158V0.176z"/>
+            <path fill="#CD4829" d="M35.96,0.176h1.957l1.48,4.294V0.176h1.957v9.512h-1.861l-1.576-4.525v4.525H35.96V0.176z"/>
+            <path fill="#CD4829" d="M42.115,0.176h1.901c2.311,0,3.547,1.577,3.547,4.525v0.462c0,2.948-1.236,4.525-3.547,4.525h-1.901V0.176z
+               M44.153,2.051v5.761c0.747,0,1.331-0.57,1.331-2.636V4.688C45.484,2.581,44.9,2.051,44.153,2.051z"/>
+            <path fill="#393A39" d="M49.096,0.176h1.902c2.311,0,3.547,1.577,3.547,4.525v0.462c0,2.948-1.236,4.525-3.547,4.525h-1.902V0.176z
+               M51.135,2.051v5.761c0.747,0,1.331-0.57,1.331-2.636V4.688C52.466,2.581,51.882,2.051,51.135,2.051z"/>
+            <path fill="#393A39" d="M55.17,0.176h4.117v1.93h-2.078v1.848h1.848v1.902h-1.848v1.89h2.118v1.943H55.17V0.176z"/>
+            <path fill="#393A39" d="M59.518,0.176h2.092l0.803,5.693l0.815-5.693h2.023l-1.78,9.539h-2.16L59.518,0.176z"/>
+            <path fill="#393A39" d="M65.577,0.176h4.117v1.93h-2.08v1.848h1.849v1.902h-1.849v1.89h2.12v1.943h-4.157V0.176z"/>
+            <path fill="#393A39" d="M70.359,0.176h2.038v7.569h1.808v1.943h-3.846V0.176z"/>
+            <path fill="#393A39" d="M74.256,5.231V4.634C74.256,1.535,75.344,0,77.069,0c1.712,0,2.799,1.535,2.799,4.634v0.597
+              c0,3.085-1.087,4.634-2.799,4.634C75.344,9.865,74.256,8.316,74.256,5.231z M77.789,5.245V4.606c0-2.228-0.271-2.731-0.72-2.731
+              s-0.734,0.503-0.734,2.731v0.639c0,2.242,0.286,2.732,0.734,2.732S77.789,7.486,77.789,5.245z"/>
+            <path fill="#393A39" d="M80.492,0.176h1.876c1.889,0,3.191,0.992,3.191,3.248v0.109c0,2.31-1.493,3.234-2.989,3.288h-0.053v2.868
+              h-2.025V0.176z M82.544,5.014c0.571-0.027,0.992-0.436,0.992-1.427V3.424c0-1.019-0.394-1.44-0.979-1.44h-0.04v3.031H82.544z"/>
+            <path fill="#393A39" d="M86.049,0.176h4.118v1.93h-2.079v1.848h1.848v1.902h-1.848v1.89h2.119v1.943h-4.158V0.176z"/>
+            <path fill="#393A39" d="M90.831,0.176h2.039c0.951,0,1.78,0.245,2.337,0.801c0.503,0.517,0.802,1.25,0.802,2.283v0.136
+              c0,1.304-0.503,2.051-1.114,2.527l1.264,3.765h-2.174L93.02,6.59h-0.163v3.099h-2.025V0.176z M92.924,4.878
+              c0.585,0,1.006-0.367,1.006-1.345V3.329c0-1.019-0.435-1.332-1.02-1.332h-0.054v2.881H92.924z"/>
+          </svg>
+          <!-- end svg -->
+
+          <p>I'm a front end developer based out of Ann Arbor, Michigan where I live with my lovely wife and two little rugrats. I'm originally from Grand Rapids, Michigan but lived in Atlanta, Georgia for a little over 20 years. I’ve always had an interest in design and user interaction. In addition, I love to solve problems, and I seem to thrive in chaotic environments. As it turns out, that is the perfect mix for a frontend developer.</p>
+
+          <p>Currenly, I am working at <a href="http://byhook.com/work" target="_blank">Hook Studios</a> here in Ann Arbor.</p>
+
+          <p>When i'm not working, I spend most my free time with the family but I also have been known to shoot some basketball and play a mean Imperial Templar DPS on Elder Scrolls Online for the PS4.</p>
+
+          <!-- <ul>
+            <li><iron-image preload fade src="../images/badge-certified.png"></iron-image></li>
+            <li><iron-image preload fade src="../images/badge-YTMasthead.png"></iron-image></li>
+            <li><iron-image preload fade src="../images/badge-HTML5.png"></iron-image></li>
+          </ul> -->
+
+        </div>
+
+      </section>
+    </main>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+      /**
+       * Registers element within Polymer.
+       * @constructor
+       */
+      Polymer({
+        /**
+         * Specifies HTML tag name for custom Polymer element.
+         * @prop
+         */
+        is: 'portfolio-about'
+
+      });
+  </script>
+</dom-module>

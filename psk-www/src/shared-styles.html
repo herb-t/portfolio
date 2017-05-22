@@ -1,0 +1,57 @@
+<!-- shared styles for all elements and index.html -->
+<dom-module id="shared-styles">
+  <template>
+    <style>
+			:root {
+				--site-font-family: 'Open Sans', Arial, sans-serif;
+				--white: #FFFFFF;
+				--black: #000;
+				--logo-red: #cf482a;
+				--logo-black: #393b39;
+				--site-max-width: 1120px;
+
+			  	--layout-flex: {
+			  		display: -webkit-flex;
+			  		display: -moz-flex;
+			  		display: -ms-flex;
+			  		display: -o-flex;
+			  		display: flex;
+			  	};
+			}
+
+			a {
+				-webkit-transition: color 0.3s ease-in-out;
+				   -moz-transition: color 0.3s ease-in-out;
+				    -ms-transition: color 0.3s ease-in-out;
+				     -o-transition: color 0.3s ease-in-out;
+				        transition: color 0.3s ease-in-out;
+			}
+
+			section,
+			aside {
+				padding: 25px;
+				-webkit-box-sizing: border-box;
+				   -moz-box-sizing: border-box;
+				        box-sizing: border-box;
+			}
+
+			.l-content-container {
+				width: 100%;
+				max-width: var(--site-max-width);
+				margin: 0 auto;
+			}
+
+			iron-image {
+				--iron-image-placeholder: {
+				  background-repeat: no-repeat;
+				  background-position: center center;
+				  -webkit-background-size: cover;
+				       -o-background-size: cover;
+				          background-size: cover;
+				}
+        --iron-image-width: 100%;
+			}
+
+    </style>
+  </template>
+</dom-module>
