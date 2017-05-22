@@ -3,9 +3,6 @@
   "shell": "src/portfolio-main.html",
   "fragments": [
     "src/portfolio-main.html",
-    "src/my-view2.html",
-    "src/my-view3.html",
-    "src/portfolio-main.html",
     "src/portfolio-project.html",
     "src/portfolio-page-home.html",
     "src/portfolio-page-about.html",

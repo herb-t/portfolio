@@ -82,9 +82,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       @media screen and (max-width: 767px) {
         .l-project-grid portfolio-project {
-          -webkit-flex: 0 0 97%;
-              -ms-flex: 0 0 97%;
-                  flex: 0 0 97%;
+          -webkit-flex: 0 0 47%;
+              -ms-flex: 0 0 47%;
+                  flex: 0 0 47%;
         }
       }
 
@@ -94,32 +94,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
-      /*@media screen and (max-width: 480px) {
+      @media screen and (max-width: 480px) {
         .l-project-grid portfolio-project {
           -webkit-flex: 0 0 97%;
               -ms-flex: 0 0 97%;
                   flex: 0 0 97%;
         }
-      }*/
+      }
 
       #loader {
-        position: absolute;
-        top: 25px;
-        left: 50%;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
         -webkit-align-items: center;
                 align-items: center;
         -webkit-justify-content: center;
                 justify-content: center;
+      }
 
-        -webkit-transform: translateX(-50%);
-           -moz-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-             -o-transform: translateX(-50%);
-                transform: translateX(-50%);
+      paper-spinner-lite {
+        --paper-spinner-color: #cf482a;
       }
 
 
